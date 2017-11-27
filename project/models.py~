@@ -94,7 +94,7 @@ class Passport_data(models.Model):
     number = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.series + " " + self.number      
+        return self.series + " " + self.number   
 
 class Request(models.Model):
     class Meta:
@@ -125,7 +125,7 @@ class Answer(models.Model):
     class Meta:
         db_table = 'answer'
 
-    answer_doc = models.TextField()
+    answer_doc = models.CharField()
     question = models.ForeignKey('Question', null=True)
     result = models.ForeignKey('Result', null=True)
     answer_score = models.IntegerField()
@@ -147,7 +147,7 @@ class Question(models.Model):
     class Meta:
         db_table = 'question'
 
-    question_doc = models.TextField()
+    question_doc = models.CharField()
     subtest = models.ForeignKey('Subtest', null=True)
 
     def __str__(self):
@@ -165,7 +165,7 @@ class Block_type(models.Model):
     class Meta:
         db_table = 'block_type'
 
-    block_type_name = models.CharField(max_length=200)
+    block_type_name = models.CharField()
 
     def __str__(self):
         return self.block_type_name
@@ -187,7 +187,7 @@ class Subtest_type(models.Model):
     class Meta:
         db_table = 'subtest_type'
 
-    subtest_type_name = models.CharField(max_length=200)
+    subtest_type_name = models.CharField()
 
     def __str__(self):
         return self.subtest_type_name
