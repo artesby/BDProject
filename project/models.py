@@ -1,9 +1,11 @@
 from django.db import models
+import uuid
 
 class Office(models.Model):
     class Meta:
         db_table = 'office'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     location = models.ForeignKey('Location', null=True)
     name = models.CharField(max_length=200)
 
@@ -25,6 +27,7 @@ class User(models.Model):
     class Meta:
         db_table = 'user'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     surname = models.CharField(max_length=30)
     name = models.CharField(max_length=30)
     second_name = models.CharField(max_length=30)
@@ -41,6 +44,7 @@ class Result(models.Model):
     class Meta:
         db_table = 'result'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey('User', null=True)
     test_status = models.PositiveSmallIntegerField()
     test_score = models.IntegerField()
@@ -53,6 +57,7 @@ class Note(models.Model):
     class Meta:
         db_table = 'note'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     result = models.ForeignKey('Result', null=True)
     issuance_date = models.DateTimeField()
     user = models.ForeignKey('User', null=True)
@@ -65,6 +70,7 @@ class Certificate(models.Model):
     class Meta:
         db_table = 'certificate'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey('User', null=True)
     issuance_date = models.DateTimeField()
     staff = models.ForeignKey('Staff', null=True)
@@ -100,6 +106,7 @@ class Request(models.Model):
     class Meta:
         db_table = 'request'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     creation_date = models.DateField(null=True)
     user = models.ForeignKey('User', null=True)
     office = models.ForeignKey('Office', null=True)
@@ -125,6 +132,7 @@ class Answer(models.Model):
     class Meta:
         db_table = 'answer'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     answer_doc = models.TextField()
     question = models.ForeignKey('Question', null=True)
     result = models.ForeignKey('Result', null=True)
