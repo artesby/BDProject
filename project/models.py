@@ -126,7 +126,8 @@ class Statistics(models.Model):
     note_count = models.IntegerField()
 
     def __str__(self):
-        return self.year + " " + self.avg_attempt + " " + self.certificate_count + " " + self.note_count
+        return self.start_date + " " + self.finish_date + " " + self.avg_attempt + " " + self.certificate_count \
+               + " " + self.note_count
 
 class Answer(models.Model):
     class Meta:
