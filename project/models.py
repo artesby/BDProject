@@ -112,19 +112,19 @@ class Request(models.Model):
     office = models.ForeignKey('Office', null=True)
 
     def __str__(self):
-        return self.creation_date 
+        return self.creation_date
 
 class Statistics(models.Model):
     class Meta:
         db_table = 'statistics'
 
-    staff = models.ForeignKey('Staff', null=True)
     location = models.ForeignKey('Location', null=True)
-    year = models.IntegerField()
-    avg_attempt = models.IntegerField()
+    start_date = models.DateTimeField()
+    finish_date = models.DateTimeField()
+    success_rate = models.IntegerField()
     certificate_count = models.IntegerField()
     note_count = models.IntegerField()
-    
+
     def __str__(self):
         return self.year + " " + self.avg_attempt + " " + self.certificate_count + " " + self.note_count
 
